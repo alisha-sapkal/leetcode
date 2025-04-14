@@ -9,13 +9,18 @@ public:
         //    }
         //}
         //return -1;
-        unordered_map<int, int>mp;
+        
+
+        //optimized
+        int ans = 0;
+        vector<int> v(nums.size()+5, 0);
         for (int n : nums) {
-            mp[n]++;
+            if (v[n] == 1) {
+                ans = n;
+                break;
+            }
+            v[n] = 1;
         }
-        for (const auto &m : mp) {
-            if (m.second > 1) return m.first;
-        }
-        return -1;
+        return ans;
     }
 };
